@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.sparkfengbo.app"
+          android:sharedUserId="android.fengbo">
+
+    <permission
+            android:name="com.sparkfengbo.test"
+            android:protectionLevel="signature"/>
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+
+        <activity
+                android:name=".android.AnotationActivity"
+                android:configChanges="orientation|keyboardHidden"
+                android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+                android:name=".android.ExportedActivity"
+                android:exported="true"
+                android:label="@string/title_activity_main2"
+                android:permission="com.sparkfengbo.test">
+            <intent-filter>
+                <action android:name="com.fengbo.export"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <service
+                android:name=".android.aidltest.InnerAIDLService"
+                android:process=":remote"/>
+
+        <activity android:name=".firstpage.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".android.ThreadAndHandlerActivity">
+        </activity>
+        <activity android:name=".android.AIDLTestActivity">
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    defaultConfig {
+        applicationId "com.sparkfengbo.app.test"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    /**
+     * 快速添加的方式：在AS的projcet structure中选在自己的工程，在右侧的下方添加library dependency，搜索annotation
+     */
+    implementation 'com.android.support:support-annotations:27.0.2'
+    implementation project(':libFBAnnotation')
+    implementation 'com.android.support:recyclerview-v7:25.3.1'
+}
