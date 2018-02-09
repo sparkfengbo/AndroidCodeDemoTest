@@ -31,6 +31,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @FBBindContentView(value = R.layout.activity_main)
@@ -57,47 +58,59 @@ public class AIDLTestActivity extends Activity {
     @FBEnumTest
     private int color = 4;
 
+    private IBookManagerInterface iBookManagerInterface;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FbAnnotInject.inject(this);
 
+        tryBindService();
+    }
+
+    private void tryBindService() {
         /**
          * 1.InnerAIDLService运行在remote进程，所以也是IPC
          */
 
-//        Intent intent = new Intent(this, InnerAIDLService.class);
-//        bindService(intent, mConnection, BIND_AUTO_CREATE);
+        Intent intent = new Intent(this, InnerAIDLService.class);
 
-        /**---------------------------*/
+        boolean isSuccessConnect = this.bindService(intent, mConnection, BIND_AUTO_CREATE);
+
+        if (isSuccessConnect) {
+            TLog.d("service connenct success");
+        } else {
+            TLog.d("service connenct fail");
+        }
+
+        /**-----------------------------------------------------------------------------------------------------------------*/
 
         /**
          * 2.找到AIDLServer（）工程下的MyService
-         */
-
-        Intent intent = new Intent("com.sparkfengbo.ng");
-
-        /**
-         * 通过setComponent无法找到
+         *
+         *通过setComponent无法找到
          *
          * 因为是另一个app的service，需要传递book，而AIDL要求包名相同，和本APP的包名有冲突 所以setComponent找不到
          * ```
          * intent.setComponent(new ComponentName("com.sparkfengbo.app", "com.sparkfengbo.app.MyService"));
          * ```
          * 但是能够找到本app内的InnerAIDLService
+         *
+         * 此AIDL的Server提供工程在https://github.com/sparkfengbo/AIDLServer中
          */
+
+//        Intent intent = new Intent("com.sparkfengbo.ng");
+//        Intent dealedIntent = createExplicitFromImplicitIntent(this, intent);
+//        boolean isSuccessConnect = this.bindService(dealedIntent, mConnection, BIND_AUTO_CREATE);
 //
-
-        Intent dealedIntent = createExplicitFromImplicitIntent(this, intent);
-        boolean isSuccessConnect = this.bindService(dealedIntent, mConnection, BIND_AUTO_CREATE);
-
-        if (isSuccessConnect) {
-            TLog.d("service connenct success");
-        } else {
-            TLog.d( "service connenct fail");
-        }
+//        if (isSuccessConnect) {
+//            TLog.d("service connenct success");
+//        } else {
+//            TLog.d( "service connenct fail");
+//        }
 
     }
+
 
     @Override
     protected void onDestroy() {
@@ -105,30 +118,49 @@ public class AIDLTestActivity extends Activity {
         super.onDestroy();
     }
 
+    private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
+        @Override
+        public void binderDied() {
+            if (iBookManagerInterface == null) {
+                return;
+            }
+
+            TLog.e("DeathRecipient binderDied");
+            iBookManagerInterface.asBinder().unlinkToDeath(mDeathRecipient, 0);
+            iBookManagerInterface = null;
+
+            tryBindService();
+        }
+    };
+
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             TLog.e("service connencted " + name.getPackageName());
 
-            IBookManagerInterface iBookManagerInterface = IBookManagerInterface.Stub.asInterface(service);
+            iBookManagerInterface = IBookManagerInterface.Stub.asInterface(service);
 
             try {
+                service.linkToDeath(mDeathRecipient, 0);
+
                 List<Book> bookList = iBookManagerInterface.getList();
                 if (bookList != null && bookList.size() > 0) {
                     for (Book book : bookList) {
-                        TLog.e(" " + book.content);
+                        TLog.e("get book list from Server【client尚未向server插入数据】" + book.content);
                     }
                 } else {
                     TLog.e("service connencted : get null or empty booklist");
                 }
 
-                iBookManagerInterface.addBook(new Book(2, "哈哈哈哈😆"));
+                iBookManagerInterface.addBook(new Book(2, "add from client : 哈222😆"));
+                iBookManagerInterface.addBook(new Book(3, "add from client : 哈333😆"));
+
 
                 bookList = iBookManagerInterface.getList();
 
                 if (bookList != null && bookList.size() > 0) {
                     for (Book book : bookList) {
-                        TLog.e(" " + book.content);
+                        TLog.e("get book list from Server【client向server插入了数据】" + book.content);
                     }
                 } else {
                     TLog.e("service connencted : get null or empty booklist");
@@ -141,7 +173,6 @@ public class AIDLTestActivity extends Activity {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-
             Log.e("TAG", "onServiceDisconnected " + name.getPackageName());
 
         }
@@ -149,10 +180,6 @@ public class AIDLTestActivity extends Activity {
 
     /**
      * http://blog.csdn.net/shenzhonglaoxu/article/details/42675287
-     *
-     * @param context
-     * @param implicitIntent
-     * @return
      */
     public Intent createExplicitFromImplicitIntent(Context context, Intent implicitIntent) {
         // Retrieve all services that can match the given intent
@@ -162,7 +189,7 @@ public class AIDLTestActivity extends Activity {
         // Make sure only one match was found
 //         || resolveInfo.size() != 1
         if (resolveInfo == null || resolveInfo.size() == 0) {
-            TLog.e( "no explicit service");
+            TLog.e("no explicit service");
             return implicitIntent;
         }
 

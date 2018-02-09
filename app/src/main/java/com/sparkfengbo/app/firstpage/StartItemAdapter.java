@@ -4,6 +4,7 @@ package com.sparkfengbo.app.firstpage;
 import com.sparkfengbo.app.R;
 import com.sparkfengbo.app.android.AIDLTestActivity;
 import com.sparkfengbo.app.android.AnotationActivity;
+import com.sparkfengbo.app.android.MessengerTestActivity;
 import com.sparkfengbo.app.android.ThreadAndHandlerActivity;
 
 import android.content.Context;
@@ -46,6 +47,7 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         TestItem itemActivityExport = new TestItem("ActivityExport", 0, 2);
         TestItem itemAIDL = new TestItem("AIDL", 0, 3);
         TestItem itemHandler = new TestItem("Handler", 0, 4);
+        TestItem itemMessenger = new TestItem("Messenger", 0, 5);
 
 
         /**
@@ -60,12 +62,39 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         mData.add(itemAnotation);
         mData.add(itemActivityExport);
         mData.add(itemAIDL);
+        mData.add(itemMessenger);
         mData.add(itemHandler);
 
 
+//        mData.add(titleSJMS);
 
-        mData.add(titleSJMS);
+    }
 
+    @Override
+    public void onClick(View view) {
+        if (mOnItemClickListener != null && view.getTag() instanceof Integer) {
+            mOnItemClickListener.onItemClick(view, (Integer) view.getTag());
+        }
+
+        if (view.getTag() instanceof Integer) {
+
+            Integer id = (Integer) view.getTag();
+            if (id == 1) {
+                Intent i = new Intent(mContext, AnotationActivity.class);
+                mContext.startActivity(i);
+            } else if (id == 2) {
+
+            } else if (id == 3) {
+                Intent i = new Intent(mContext, AIDLTestActivity.class);
+                mContext.startActivity(i);
+            } else if (id == 4) {
+                Intent i = new Intent(mContext, ThreadAndHandlerActivity.class);
+                mContext.startActivity(i);
+            } else if (id == 5) {
+                Intent i = new Intent(mContext, MessengerTestActivity.class);
+                mContext.startActivity(i);
+            }
+        }
     }
 
     @Override
@@ -115,30 +144,6 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             return mData.size();
         }
         return 0;
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (mOnItemClickListener != null && view.getTag() instanceof Integer) {
-            mOnItemClickListener.onItemClick(view, (Integer) view.getTag());
-        }
-
-        if (view.getTag() instanceof Integer) {
-
-            Integer id = (Integer) view.getTag();
-            if (id == 1) {
-                Intent i = new Intent(mContext, AnotationActivity.class);
-                mContext.startActivity(i);
-            } else if (id == 2) {
-
-            } else if (id == 3) {
-                Intent i = new Intent(mContext, AIDLTestActivity.class);
-                mContext.startActivity(i);
-            } else if (id == 4) {
-                Intent i = new Intent(mContext, ThreadAndHandlerActivity.class);
-                mContext.startActivity(i);
-            }
-        }
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
