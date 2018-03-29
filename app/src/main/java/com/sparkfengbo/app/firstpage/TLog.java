@@ -7,7 +7,7 @@ import android.util.Log;
 
 
 public class TLog {
-    static private final String LOG_TAG = "fengbo";
+    static private final String LOG_TAG = "sparkfengbo";
 
     public static boolean isDebugMode() {
         return true;

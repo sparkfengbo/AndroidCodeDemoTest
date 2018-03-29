@@ -7,8 +7,8 @@
             android:name="com.sparkfengbo.test"
             android:protectionLevel="signature"/>
 
+    <!-- android:name=".firstpage.BaseApplication" -->
     <application
-            android:name=".firstpage.BaseApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -35,7 +35,6 @@
         <service
                 android:name=".android.aidltest.InnerAIDLService"
                 android:process=":remote"/>
-
         <service
                 android:name=".android.aidltest.InnerMessengerService"
                 android:process=":remote"/>
@@ -49,12 +48,14 @@
         </activity>
         <activity android:name=".android.ThreadAndHandlerActivity">
         </activity>
-
         <activity
                 android:name=".android.AIDLTestActivity"
                 android:process=":remote2">
         </activity>
         <activity android:name=".android.MessengerTestActivity">
+        </activity>
+        <activity
+                android:name=".android.PluginTestActivity">
         </activity>
     </application>
 

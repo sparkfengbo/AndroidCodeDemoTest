@@ -93,6 +93,7 @@ public class ThreadAndHandlerActivity extends Activity {
         TLog.e(local.get().json_str);
 
         HandlerThread thread  = new HandlerThread("new_handler_thread");
+        thread.start();
         Handler handler = new Handler(thread.getLooper(), new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

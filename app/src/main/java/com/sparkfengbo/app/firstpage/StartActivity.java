@@ -3,10 +3,13 @@ package com.sparkfengbo.app.firstpage;
 import com.sparkfengbo.app.R;
 
 import android.app.Activity;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 public class StartActivity extends Activity {
 
@@ -40,5 +43,33 @@ public class StartActivity extends Activity {
             }
         });
 //        mRecyclerView.setHasFixedSize(true);
+    }
+
+    @Override
+    public Resources getResources() {
+        TLog.e("getApplicationContext() = " + getApplicationContext());
+        TLog.e("getApplication() = " + getApplication());
+        TLog.e("super.getResources() = " + super.getResources());
+        if(getApplication() != null && getApplication().getResources() != null){
+            TLog.e( "get superApplication resource");
+            return getApplication().getResources();
+        }
+        return super.getResources();
+    }
+
+    @Override
+    public AssetManager getAssets() {
+        if(getApplication() != null && getApplication().getAssets() != null){
+            return getApplication().getAssets();
+        }
+        return super.getAssets();
+    }
+
+    @Override
+    public Resources.Theme getTheme() {
+        if(getApplication() != null && getApplication().getTheme() != null){
+            return getApplication().getTheme();
+        }
+        return super.getTheme();
     }
 }
