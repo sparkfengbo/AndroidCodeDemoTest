@@ -1,25 +1,20 @@
-package com.sparkfengbo.app.android;
+package com.sparkfengbo.app.android.aidltest;
 
 import com.sparkfengbo.app.R;
-import com.sparkfengbo.app.android.aidltest.Book;
-import com.sparkfengbo.app.android.aidltest.IBookManagerInterface;
-import com.sparkfengbo.app.android.aidltest.InnerAIDLService;
 import com.sparkfengbo.app.android.annotations.FbAnnotInject;
 import com.sparkfengbo.app.android.annotations.FBBindColor;
 import com.sparkfengbo.app.android.annotations.FBBindContentView;
 import com.sparkfengbo.app.android.annotations.FBBindString;
 import com.sparkfengbo.app.android.annotations.FBBindView;
-import com.sparkfengbo.app.firstpage.TLog;
+import com.sparkfengbo.app.android.base.TLog;
 import com.sparkfengbo.app.libfbannotation.c21annotation.mydemo.FBEnumTest;
 import com.sparkfengbo.app.libfbannotation.c21annotation.mydemo.FBFloatRange;
-import com.sparkfengbo.app.android.annotations.FbBindListener;
 
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
@@ -27,11 +22,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @FBBindContentView(value = R.layout.activity_main)
@@ -86,9 +78,9 @@ public class AIDLTestActivity extends Activity {
         /**-----------------------------------------------------------------------------------------------------------------*/
 
         /**
-         * 2.找到AIDLServer（）工程下的MyService
+         * 2.找到AIDLServer 工程下的MyService
          *
-         *通过setComponent无法找到
+         * 通过setComponent无法找到
          *
          * 因为是另一个app的service，需要传递book，而AIDL要求包名相同，和本APP的包名有冲突 所以setComponent找不到
          * ```
@@ -109,13 +101,6 @@ public class AIDLTestActivity extends Activity {
 //            TLog.d( "service connenct fail");
 //        }
 
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        unbindService(mConnection);
-        super.onDestroy();
     }
 
     private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
@@ -206,5 +191,13 @@ public class AIDLTestActivity extends Activity {
         explicitIntent.setComponent(component);
 
         return explicitIntent;
+    }
+
+
+
+    @Override
+    protected void onDestroy() {
+        unbindService(mConnection);
+        super.onDestroy();
     }
 }

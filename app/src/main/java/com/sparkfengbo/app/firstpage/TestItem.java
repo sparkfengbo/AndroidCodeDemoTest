@@ -1,5 +1,7 @@
 package com.sparkfengbo.app.firstpage;
 
+import com.sparkfengbo.app.android.base.BaseItemData;
+
 /**
  * Created by fengbo on 2018/2/7.
  */

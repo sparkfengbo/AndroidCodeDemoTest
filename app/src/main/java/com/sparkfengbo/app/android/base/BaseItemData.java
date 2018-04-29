@@ -1,4 +1,4 @@
-package com.sparkfengbo.app.firstpage;
+package com.sparkfengbo.app.android.base;
 
 /**
  * Created by fengbo on 2018/2/7.

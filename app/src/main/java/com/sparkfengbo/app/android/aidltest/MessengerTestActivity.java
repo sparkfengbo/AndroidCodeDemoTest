@@ -1,11 +1,9 @@
-package com.sparkfengbo.app.android;
+package com.sparkfengbo.app.android.aidltest;
 
 import com.sparkfengbo.app.R;
-import com.sparkfengbo.app.android.aidltest.IBookManagerInterface;
-import com.sparkfengbo.app.android.aidltest.InnerMessengerService;
 import com.sparkfengbo.app.android.annotations.FbAnnotInject;
 import com.sparkfengbo.app.android.annotations.FBBindContentView;
-import com.sparkfengbo.app.firstpage.TLog;
+import com.sparkfengbo.app.android.base.TLog;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -21,9 +19,9 @@ import android.os.RemoteException;
 @FBBindContentView(value = R.layout.activity_main)
 public class MessengerTestActivity extends Activity {
 
-    private IBookManagerInterface iBookManagerInterface;
-
     private Messenger mClientSender;
+
+    private final Messenger mClientReceiver = new Messenger(new MessengerTestActivity.MessengerHandler());
 
     private static class MessengerHandler extends Handler {
         @Override
@@ -35,8 +33,6 @@ public class MessengerTestActivity extends Activity {
             }
         }
     }
-
-    private final Messenger mClientReceive = new Messenger(new MessengerTestActivity.MessengerHandler());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +52,6 @@ public class MessengerTestActivity extends Activity {
         }
     }
 
-
-    @Override
-    protected void onDestroy() {
-        unbindService(mConnection);
-        super.onDestroy();
-    }
-
-
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -78,7 +66,7 @@ public class MessengerTestActivity extends Activity {
             Bundle bundle = new Bundle();
             bundle.putString("msg", "String from MessengerTestActivity");
             msg.setData(bundle);
-            msg.replyTo = mClientReceive;
+            msg.replyTo = mClientReceiver;
             try {
                 mClientSender.send(msg);
             } catch (RemoteException e) {
@@ -91,4 +79,11 @@ public class MessengerTestActivity extends Activity {
 
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        unbindService(mConnection);
+        super.onDestroy();
+    }
+
 }

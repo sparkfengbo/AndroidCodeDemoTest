@@ -2,10 +2,11 @@ package com.sparkfengbo.app.firstpage;
 
 
 import com.sparkfengbo.app.R;
-import com.sparkfengbo.app.android.AIDLTestActivity;
-import com.sparkfengbo.app.android.AnotationActivity;
-import com.sparkfengbo.app.android.MessengerTestActivity;
-import com.sparkfengbo.app.android.ThreadAndHandlerActivity;
+import com.sparkfengbo.app.android.aidltest.AIDLTestActivity;
+import com.sparkfengbo.app.android.annotations.AnotationActivity;
+import com.sparkfengbo.app.android.aidltest.MessengerTestActivity;
+import com.sparkfengbo.app.android.ThreadTest.ThreadAndHandlerActivity;
+import com.sparkfengbo.app.android.base.BaseItemData;
 
 import android.content.Context;
 import android.content.Intent;

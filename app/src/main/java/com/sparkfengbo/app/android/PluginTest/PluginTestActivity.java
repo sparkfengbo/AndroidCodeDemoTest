@@ -1,13 +1,12 @@
-package com.sparkfengbo.app.android;
+package com.sparkfengbo.app.android.PluginTest;
 
-import com.sparkfengbo.app.firstpage.StartActivity;
+import com.sparkfengbo.app.android.ExportTest.ExportedActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,6 +29,9 @@ public class PluginTestActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PluginTestActivity.this, ExportedActivity.class));
+
+//                startActivity(new Intent(PluginTestActivity.this, StartActivity.class));
+
             }
         });
     }

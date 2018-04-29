@@ -1,4 +1,4 @@
-package com.sparkfengbo.app.android;
+package com.sparkfengbo.app.android.ThreadTest;
 
 import com.sparkfengbo.app.libfbannotation.c21annotation.mydemo.FBJsonCast;
 

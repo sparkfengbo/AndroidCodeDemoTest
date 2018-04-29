@@ -16,12 +16,12 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".android.AnotationActivity"
+                android:name=".android.annotations.AnotationActivity"
                 android:configChanges="orientation|keyboardHidden"
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".android.ExportedActivity"
+                android:name=".android.ExportTest.ExportedActivity"
                 android:exported="true"
                 android:label="@string/title_activity_main2"
                 android:permission="com.sparkfengbo.test">
@@ -46,16 +46,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".android.ThreadAndHandlerActivity">
+        <activity android:name=".android.ThreadTest.ThreadAndHandlerActivity">
         </activity>
         <activity
-                android:name=".android.AIDLTestActivity"
+                android:name=".android.aidltest.AIDLTestActivity"
                 android:process=":remote2">
         </activity>
-        <activity android:name=".android.MessengerTestActivity">
+        <activity android:name=".android.aidltest.MessengerTestActivity">
         </activity>
         <activity
-                android:name=".android.PluginTestActivity">
+                android:name=".android.PluginTest.PluginTestActivity">
         </activity>
     </application>
 

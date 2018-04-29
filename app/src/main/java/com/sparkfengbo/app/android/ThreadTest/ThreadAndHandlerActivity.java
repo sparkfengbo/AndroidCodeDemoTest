@@ -1,4 +1,4 @@
-package com.sparkfengbo.app.android;
+package com.sparkfengbo.app.android.ThreadTest;
 
 import com.sparkfengbo.app.R;
 import com.sparkfengbo.app.android.annotations.FBBindColor;
@@ -7,7 +7,7 @@ import com.sparkfengbo.app.android.annotations.FBBindString;
 import com.sparkfengbo.app.android.annotations.FBBindView;
 import com.sparkfengbo.app.android.annotations.FbAnnotInject;
 import com.sparkfengbo.app.android.annotations.FbBindListener;
-import com.sparkfengbo.app.firstpage.TLog;
+import com.sparkfengbo.app.android.base.TLog;
 import com.sparkfengbo.app.libfbannotation.c21annotation.mydemo.FBEnumTest;
 import com.sparkfengbo.app.libfbannotation.c21annotation.mydemo.FBFloatRange;
 

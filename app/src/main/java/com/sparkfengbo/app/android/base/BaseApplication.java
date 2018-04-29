@@ -1,4 +1,4 @@
-package com.sparkfengbo.app.firstpage;
+package com.sparkfengbo.app.android.base;
 
 import android.app.Application;
 import android.os.Process;

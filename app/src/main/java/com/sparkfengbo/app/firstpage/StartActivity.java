@@ -1,15 +1,15 @@
 package com.sparkfengbo.app.firstpage;
 
 import com.sparkfengbo.app.R;
+import com.sparkfengbo.app.android.base.BaseItemData;
+import com.sparkfengbo.app.android.base.TLog;
 
 import android.app.Activity;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 public class StartActivity extends Activity {
 

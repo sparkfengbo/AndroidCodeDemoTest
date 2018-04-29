@@ -1,19 +1,15 @@
 package com.sparkfengbo.app.android.aidltest;
 
-import com.sparkfengbo.app.firstpage.TLog;
+import com.sparkfengbo.app.android.base.TLog;
 
 import android.app.Service;
 import android.content.Intent;
-import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class InnerMessengerService extends Service {
 
