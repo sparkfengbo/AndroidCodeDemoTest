@@ -34,11 +34,11 @@ public class StartActivity extends Activity {
             @Override
             public int getSpanSize(int position) {
                 if (mAdapter != null && mAdapter.getItemViewType(position) == BaseItemData.TYPE_TITLE) {
-                    TLog.e("p = " + position + "  1");
+//                    TLog.e("p = " + position + "  1");
                     return 1;
                 }
 
-                TLog.e("p = " + position + "  manager.getSpanCount()");
+//                TLog.e("p = " + position + "  manager.getSpanCount()");
                 return manager.getSpanCount();
             }
         });
@@ -47,11 +47,11 @@ public class StartActivity extends Activity {
 
     @Override
     public Resources getResources() {
-        TLog.e("getApplicationContext() = " + getApplicationContext());
-        TLog.e("getApplication() = " + getApplication());
-        TLog.e("super.getResources() = " + super.getResources());
+//        TLog.e("getApplicationContext() = " + getApplicationContext());
+//        TLog.e("getApplication() = " + getApplication());
+//        TLog.e("super.getResources() = " + super.getResources());
         if(getApplication() != null && getApplication().getResources() != null){
-            TLog.e( "get superApplication resource");
+//            TLog.e( "get superApplication resource");
             return getApplication().getResources();
         }
         return super.getResources();

@@ -26,6 +26,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ *
+ * 关于Binder的文章
+ *
+ * <a href = "https://blog.csdn.net/luoshengyang/article/details/6618363">Android进程间通信（IPC）机制Binder简要介绍和学习计划</>
+ * <a href = "http://www.cnblogs.com/innost/archive/2011/01/09/1931456.html">Android深入浅出之Binder机制</>
+ */
 @FBBindContentView(value = R.layout.activity_main)
 public class AIDLTestActivity extends Activity {
     @FBBindView(R.id.tv_1)
@@ -119,6 +126,7 @@ public class AIDLTestActivity extends Activity {
     };
 
     private ServiceConnection mConnection = new ServiceConnection() {
+
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             TLog.e("service connencted " + name.getPackageName());

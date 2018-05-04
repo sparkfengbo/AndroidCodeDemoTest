@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.sparkfengbo.app"
-          android:sharedUserId="android.fengbo">
+          android:sharedUserId="android.fengbo"
+          >
 
     <permission
             android:name="com.sparkfengbo.test"
@@ -54,8 +55,25 @@
         </activity>
         <activity android:name=".android.aidltest.MessengerTestActivity">
         </activity>
-        <activity
-                android:name=".android.PluginTest.PluginTestActivity">
+        <activity android:name=".android.PluginTest.PluginTestActivity">
+        </activity>
+        <activity android:name=".android.aidltest.AshmemActivty">
+        </activity>
+
+        <service
+                android:name=".android.aidltest.InnerAshmemService"
+                android:enabled="true"
+                android:exported="false"
+                android:process=":remote">
+        </service>
+        <service
+                android:name=".android.aidltest.AnotherInnnerAshmemService"
+                android:enabled="true"
+                android:exported="false"
+                android:process=":remote">
+        </service>
+
+        <activity android:name=".android.aidltest.AnotherAshmemActivty">
         </activity>
     </application>
 

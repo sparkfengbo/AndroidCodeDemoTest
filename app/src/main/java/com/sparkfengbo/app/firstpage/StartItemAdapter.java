@@ -3,6 +3,9 @@ package com.sparkfengbo.app.firstpage;
 
 import com.sparkfengbo.app.R;
 import com.sparkfengbo.app.android.aidltest.AIDLTestActivity;
+import com.sparkfengbo.app.android.aidltest.AnotherAshmemActivty;
+import com.sparkfengbo.app.android.aidltest.AnotherInnnerAshmemService;
+import com.sparkfengbo.app.android.aidltest.AshmemActivty;
 import com.sparkfengbo.app.android.annotations.AnotationActivity;
 import com.sparkfengbo.app.android.aidltest.MessengerTestActivity;
 import com.sparkfengbo.app.android.ThreadTest.ThreadAndHandlerActivity;
@@ -44,11 +47,15 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         /**
          * Item
          */
+        //TODO 这里添加ITEM
         TestItem itemAnotation = new TestItem("注解", 0, 1);
         TestItem itemActivityExport = new TestItem("ActivityExport", 0, 2);
         TestItem itemAIDL = new TestItem("AIDL", 0, 3);
         TestItem itemHandler = new TestItem("Handler", 0, 4);
         TestItem itemMessenger = new TestItem("Messenger", 0, 5);
+        TestItem itemAshemem = new TestItem("Ashmem", 0, 6);
+        TestItem itemAnotherAshemem = new TestItem("AnotherAshmem", 0, 7);
+
 
 
         /**
@@ -65,6 +72,10 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         mData.add(itemAIDL);
         mData.add(itemMessenger);
         mData.add(itemHandler);
+        mData.add(itemAshemem);
+        mData.add(itemAnotherAshemem);
+
+
 
 
 //        mData.add(titleSJMS);
@@ -79,6 +90,7 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         if (view.getTag() instanceof Integer) {
 
+            //TODO 这里添加点击事件
             Integer id = (Integer) view.getTag();
             if (id == 1) {
                 Intent i = new Intent(mContext, AnotationActivity.class);
@@ -91,8 +103,11 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             } else if (id == 4) {
                 Intent i = new Intent(mContext, ThreadAndHandlerActivity.class);
                 mContext.startActivity(i);
-            } else if (id == 5) {
-                Intent i = new Intent(mContext, MessengerTestActivity.class);
+            } else if (id == 6) {
+                Intent i = new Intent(mContext, AshmemActivty.class);
+                mContext.startActivity(i);
+            } else if (id == 7) {
+                Intent i = new Intent(mContext, AnotherAshmemActivty.class);
                 mContext.startActivity(i);
             }
         }
