@@ -10,6 +10,7 @@ import com.sparkfengbo.app.android.annotations.AnotationActivity;
 import com.sparkfengbo.app.android.aidltest.MessengerTestActivity;
 import com.sparkfengbo.app.android.ThreadTest.ThreadAndHandlerActivity;
 import com.sparkfengbo.app.android.base.BaseItemData;
+import com.sparkfengbo.app.android.fragment.FragmentTestActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -56,6 +57,9 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         TestItem itemAshemem = new TestItem("Ashmem", 0, 6);
         TestItem itemAnotherAshemem = new TestItem("AnotherAshmem", 0, 7);
 
+        TestItem itemFragment = new TestItem("Fragment", 0, 8);
+
+
 
 
         /**
@@ -74,6 +78,7 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         mData.add(itemHandler);
         mData.add(itemAshemem);
         mData.add(itemAnotherAshemem);
+        mData.add(itemFragment);
 
 
 
@@ -108,6 +113,9 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 mContext.startActivity(i);
             } else if (id == 7) {
                 Intent i = new Intent(mContext, AnotherAshmemActivty.class);
+                mContext.startActivity(i);
+            } else if (id == 8) {
+                Intent i = new Intent(mContext, FragmentTestActivity.class);
                 mContext.startActivity(i);
             }
         }

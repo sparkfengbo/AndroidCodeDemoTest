@@ -21,6 +21,12 @@
                 android:configChanges="orientation|keyboardHidden"
                 android:screenOrientation="portrait">
         </activity>
+
+        <activity
+            android:name=".android.fragment.FragmentTestActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
                 android:name=".android.ExportTest.ExportedActivity"
                 android:exported="true"
