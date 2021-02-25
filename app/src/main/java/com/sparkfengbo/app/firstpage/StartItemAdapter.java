@@ -2,6 +2,7 @@ package com.sparkfengbo.app.firstpage;
 
 
 import com.sparkfengbo.app.R;
+import com.sparkfengbo.app.android.Activity.LaunchModeActivity;
 import com.sparkfengbo.app.android.aidltest.AIDLTestActivity;
 import com.sparkfengbo.app.android.aidltest.AnotherAshmemActivty;
 import com.sparkfengbo.app.android.aidltest.AnotherInnnerAshmemService;
@@ -58,6 +59,7 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         TestItem itemAnotherAshemem = new TestItem("AnotherAshmem", 0, 7);
 
         TestItem itemFragment = new TestItem("Fragment", 0, 8);
+        TestItem itemLauchModel = new TestItem("LaunchMode", 0, 9);
 
 
 
@@ -79,6 +81,7 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         mData.add(itemAshemem);
         mData.add(itemAnotherAshemem);
         mData.add(itemFragment);
+        mData.add(itemLauchModel);
 
 
 
@@ -116,6 +119,9 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 mContext.startActivity(i);
             } else if (id == 8) {
                 Intent i = new Intent(mContext, FragmentTestActivity.class);
+                mContext.startActivity(i);
+            } else if (id == 9) {
+                Intent i = new Intent(mContext, LaunchModeActivity.class);
                 mContext.startActivity(i);
             }
         }

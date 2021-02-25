@@ -4,11 +4,15 @@ package com.sparkfengbo.app.android.fragment;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 
 import com.sparkfengbo.app.R;
+import com.sparkfengbo.app.android.Activity.LaunchMode2Activity;
+import com.sparkfengbo.app.android.Activity.LaunchModeActivity;
 
 import static android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE;
 
@@ -63,6 +67,18 @@ public class FragmentTestActivity extends Activity {
         ft2.addToBackStack("WTF");
         ft2.replace(R.id.fragment_container_2, new TestFragment4());
         ft2.commit();
+    }
+
+    @Override
+    public void onSaveInstanceState(final Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d("fengbo", "FragmentTestActivity#onSaveInstanceState");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(final Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.d("fengbo", "FragmentTestActivity#onRestoreInstanceState");
     }
 
     public void onPop() {

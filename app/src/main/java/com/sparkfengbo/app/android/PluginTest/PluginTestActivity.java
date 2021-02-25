@@ -1,6 +1,6 @@
 package com.sparkfengbo.app.android.PluginTest;
 
-import com.sparkfengbo.app.android.ExportTest.ExportedActivity;
+import com.sparkfengbo.app.android.Activity.ExportedActivity;
 
 import android.content.Intent;
 import android.os.Bundle;

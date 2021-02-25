@@ -4,9 +4,9 @@
           android:sharedUserId="android.fengbo"
           >
 
-    <permission
-            android:name="com.sparkfengbo.test"
-            android:protectionLevel="signature"/>
+<!--    <permission-->
+<!--            android:name="com.sparkfengbo.test"-->
+<!--            android:protectionLevel="signature"/>-->
 
     <!-- android:name=".firstpage.BaseApplication" -->
     <application
@@ -23,18 +23,44 @@
         </activity>
 
         <activity
-            android:name=".android.fragment.FragmentTestActivity"
+            android:name=".android.fragment.FragmentTestActivity">
+        </activity>
+
+        <activity
+            android:name=".android.Activity.LaunchModeActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".android.ExportTest.ExportedActivity"
+            android:name=".android.Activity.LaunchMode2Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.xxx.mode2">
+<!--            android:launchMode="singleTask"-->
+<!--            android:allowTaskReparenting="true"-->
+
+            <!--            android:process=":remote"-->
+        </activity>
+
+        <activity
+            android:name=".android.Activity.LaunchMode3Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:allowTaskReparenting="true"
+            >
+<!--            android:taskAffinity=":mode3"-->
+
+        </activity>
+        <activity
+                android:name=".android.Activity.ExportedActivity"
                 android:exported="true"
                 android:label="@string/title_activity_main2"
-                android:permission="com.sparkfengbo.test">
+            android:allowTaskReparenting="true"
+            >
+<!--            android:permission="com.sparkfengbo.test"-->
             <intent-filter>
                 <action android:name="com.fengbo.export"/>
-
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>

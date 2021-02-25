@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 public class StartActivity extends Activity {
 
@@ -20,6 +21,7 @@ public class StartActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("fengbo", "StartActivity#onCreate");
         setContentView(R.layout.activity_start);
 
         mAdapter = new StartItemAdapter(this);

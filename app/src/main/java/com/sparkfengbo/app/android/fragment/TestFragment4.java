@@ -23,7 +23,7 @@ public class TestFragment4 extends Fragment {
     @Override
     public void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("fengbo", TAG+"#onCreate");
+        Log.d("fengbo", TAG+"#onCreate" + this);
     }
 
     @Nullable
