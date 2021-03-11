@@ -12,6 +12,7 @@ import com.sparkfengbo.app.android.aidltest.MessengerTestActivity;
 import com.sparkfengbo.app.android.ThreadTest.ThreadAndHandlerActivity;
 import com.sparkfengbo.app.android.base.BaseItemData;
 import com.sparkfengbo.app.android.fragment.FragmentTestActivity;
+import com.sparkfengbo.app.android.webview.WebviewActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -82,9 +83,7 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         mData.add(itemAnotherAshemem);
         mData.add(itemFragment);
         mData.add(itemLauchModel);
-
-
-
+        mData.add(new TestItem("Webview", 0, 10));
 
 //        mData.add(titleSJMS);
 
@@ -122,6 +121,9 @@ public class StartItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 mContext.startActivity(i);
             } else if (id == 9) {
                 Intent i = new Intent(mContext, LaunchModeActivity.class);
+                mContext.startActivity(i);
+            } else if (id == 10) {
+                Intent i = new Intent(mContext, WebviewActivity.class);
                 mContext.startActivity(i);
             }
         }

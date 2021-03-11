@@ -107,6 +107,9 @@
 
         <activity android:name=".android.aidltest.AnotherAshmemActivty">
         </activity>
+
+        <activity android:name=".android.webview.WebviewActivity">
+        </activity>
     </application>
 
 </manifest>
